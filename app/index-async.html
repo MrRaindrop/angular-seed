@@ -2,21 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
   <style>
     [ng-cloak] {
       display: none;
     }
   </style>
+  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script>
-    // include angular loader, which allows the files to load in any order
-    /*
-     AngularJS v1.0.7
-     (c) 2010-2012 Google, Inc. http://angularjs.org
-     License: MIT
-    */
-    (function(i){'use strict';function d(c,b,e){return c[b]||(c[b]=e())}return d(d(i,"angular",Object),"module",function(){var c={};return function(b,e,f){e&&c.hasOwnProperty(b)&&(c[b]=null);return d(c,b,function(){function a(a,b,d){return function(){c[d||"push"]([a,b,arguments]);return g}}if(!e)throw Error("No module: "+b);var c=[],d=[],h=a("$injector","invoke"),g={_invokeQueue:c,_runBlocks:d,requires:e,name:b,provider:a("$provide","provider"),factory:a("$provide","factory"),service:a("$provide","service"),
-    value:a("$provide","value"),constant:a("$provide","constant","unshift"),filter:a("$filterProvider","register"),controller:a("$controllerProvider","register"),directive:a("$compileProvider","directive"),config:h,run:function(a){d.push(a);return this}};f&&h(f);return g})}})})(window);
-
+    // include AngularJS loader, which allows the files to load in any order
+    //@@NG_LOADER_START@@
+    // You need to run `npm run update-index-async` to inject the AngularJS async code here
+    //@@NG_LOADER_END@@
 
     // include a third-party async loader library
     /*!
@@ -31,28 +29,30 @@
     // load all of the dependencies asynchronously.
     $script([
       'lib/angular/angular.js',
-      'js/app.js',
-      'js/services.js',
-      'js/controllers.js',
-      'js/filters.js',
-      'js/directives.js'
+      'lib/angular-route/angular-route.js',
+      'app.js',
+      'view1/view1.js',
+      'view2/view2.js',
+      'core/version/version.js',
+      'core/version/version-directive.js',
+      'core/version/interpolate-filter.js'
     ], function() {
-      // when all is done, execute bootstrap angular application
+      // when all is done, execute bootstrap AngularJS application
       angular.bootstrap(document, ['myApp']);
     });
   </script>
   <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="app.css">
 </head>
 <body ng-cloak>
   <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
+    <li><a href="#!/view1">view1</a></li>
+    <li><a href="#!/view2">view2</a></li>
   </ul>
 
   <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <div>AngularJS seed app: v<span app-version></span></div>
 
 </body>
 </html>
